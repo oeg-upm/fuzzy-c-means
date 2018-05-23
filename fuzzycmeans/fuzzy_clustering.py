@@ -1,8 +1,7 @@
-
 import numpy as np
 import math
 import random
-
+from fuzzycmeans import SMALL_VALUE, logger
 
 class FCM:
     """
@@ -58,7 +57,7 @@ class FCM:
                     rand_num = round(1.0/self.n_clusters, 2)
                     if rand_num + row_sum >= 1.0:  # to prevent membership sum for a point to be larger than 1.0
                         if rand_num + row_sum - 0.01 >= 1.0:
-                            print "ERROR: SOMETHING IS NOT RIGHT IN init_membership"
+                            logger.error('Something is not right in the init_membership')
                             return None
                         else:
                             self.u[i][c] = rand_num - 0.01
@@ -107,15 +106,15 @@ class FCM:
                     sum1_vec += interm2
                     sum2_vec += interm1
                     if np.any(np.isnan(sum1_vec)):
-                        print "compute_cluster_centers> interm1 %s" % str(interm1)
-                        print "compute_cluster_centers> interm2 %s" % str(interm2)
-                        print "compute_cluster_centers> X[%d] %s" % (i, str(X[i]))
-                        print "compute_cluster_centers> loop sum1_vec %s" % str(sum1_vec)
-                        print "compute_cluster_centers> loop sum2_vec %s" % str(sum2_vec)
-                        print "X: [%d] %s" % (i-1, X[i-1])
-                        print "X: [%d] %s" % (i+1, X[i+1])
-                        print "X: "
-                        print X
+                        logger.debug("compute_cluster_centers> interm1 %s" % str(interm1))
+                        logger.debug("compute_cluster_centers> interm2 %s" % str(interm2))
+                        logger.debug("compute_cluster_centers> X[%d] %s" % (i, str(X[i])))
+                        logger.debug("compute_cluster_centers> loop sum1_vec %s" % str(sum1_vec))
+                        logger.debug("compute_cluster_centers> loop sum2_vec %s" % str(sum2_vec))
+                        logger.debug("X: [%d] %s" % (i-1, X[i-1]))
+                        logger.debug("X: [%d] %s" % (i+1, X[i+1]))
+                        logger.debug("X: ")
+                        logger.debug(X)
                         raise Exception("There is a nan in compute_cluster_centers method if")
                 if sum2_vec == 0:
                     sum2_vec = 0.000001
@@ -130,15 +129,15 @@ class FCM:
                     sum1_vec += interm2
                     sum2_vec += interm1
                     if np.any(np.isnan(sum1_vec)):
-                        print "compute_cluster_centers> interm1 %s" % str(interm1)
-                        print "compute_cluster_centers> interm2 %s" % str(interm2)
-                        print "compute_cluster_centers> X[%d] %s" % (i, str(X[i]))
-                        print "compute_cluster_centers> loop sum1_vec %s" % str(sum1_vec)
-                        print "compute_cluster_centers> loop sum2_vec %s" % str(sum2_vec)
-                        print "X: [%d] %s" % (i-1, X[i-1])
-                        print "X: [%d] %s" % (i+1, X[i+1])
-                        print "X: "
-                        print X
+                        logger.debug("compute_cluster_centers> interm1 %s" % str(interm1))
+                        logger.debug("compute_cluster_centers> interm2 %s" % str(interm2))
+                        logger.debug("compute_cluster_centers> X[%d] %s" % (i, str(X[i])))
+                        logger.debug("compute_cluster_centers> loop sum1_vec %s" % str(sum1_vec))
+                        logger.debug("compute_cluster_centers> loop sum2_vec %s" % str(sum2_vec))
+                        logger.debug("X: [%d] %s" % (i-1, X[i-1]))
+                        logger.debug("X: [%d] %s" % (i+1, X[i+1]))
+                        logger.debug("X: ")
+                        logger.debug(X)
                         raise Exception("There is a nan in compute_cluster_centers method else")
                 if sum2_vec == 0:
                     sum2_vec = 0.000001
@@ -167,7 +166,6 @@ class FCM:
         :param cluster_idx:
         :return: return computer membership for the given ids
         """
-        from clustering import SMALL_VALUE
         clean_X = X
         d1 = self.distance_squared(clean_X[datapoint_idx], self.cluster_centers_[cluster_idx])
         sum1 = 0.0
@@ -177,23 +175,22 @@ class FCM:
                 d2 = SMALL_VALUE
             sum1 += (d1/d2) ** (1.0/(self.m-1))
             if np.any(np.isnan(sum1)):
-                print "nan is found in compute_membership_single"
-                print "d1: %s" % str(d1)
-                print "sum1: %s" % str(sum1)
-                print "d2: %s" % str(d2)
-                print "c: %s" % str(c)
-                print "X[%d] %s" % (datapoint_idx, str(clean_X[datapoint_idx]))
-                print "centers: %s" % str(self.cluster_centers_)
+                logger.debug("nan is found in compute_membership_single")
+                logger.debug("d1: %s" % str(d1))
+                logger.debug("sum1: %s" % str(sum1))
+                logger.debug("d2: %s" % str(d2))
+                logger.debug("c: %s" % str(c))
+                logger.debug("X[%d] %s" % (datapoint_idx, str(clean_X[datapoint_idx])))
+                logger.debug("centers: %s" % str(self.cluster_centers_))
                 raise Exception("nan is found in computer_memberhip_single method in the inner for")
-
         if sum1 == 0:  # because otherwise it will return inf
             return 1.0 - SMALL_VALUE
         if np.any(np.isnan(sum1 ** -1)):
-            print "nan is found in compute_membership_single"
-            print "d1: %s" % str(d1)
-            print "sum1: %s" % str(sum1)
-            print "X[%d] %s" % (datapoint_idx, str(clean_X[datapoint_idx]))
-            print "centers: %s" % str(self.cluster_centers_)
+            logger.debug("nan is found in compute_membership_single")
+            logger.debug("d1: %s" % str(d1))
+            logger.debug("sum1: %s" % str(sum1))
+            logger.debug("X[%d] %s" % (datapoint_idx, str(clean_X[datapoint_idx])))
+            logger.debug("centers: %s" % str(self.cluster_centers_))
             raise Exception("nan is found in computer_memberhip_single method")
         return sum1 ** -1
 
@@ -230,8 +227,8 @@ class FCM:
                 list_of_centers = [init_centers]
             self.update_membership(X)
             membership_history.append(self.u.copy())
-            print "updated membership is: "
-            print self.u
+            logger.info("updated membership is: ")
+            logger.info(self.u)
         return self
 
     def predict(self, X):
@@ -243,9 +240,9 @@ class FCM:
         self.update_membership(X)
         predicted_u = self.u.copy()
         if np.any(np.isnan(predicted_u)):
-            print "predict> has a nan"
-            print "u:"
-            print u
+            logger.debug("predict> has a nan")
+            logger.debug("u:")
+            logger.debug(u)
             raise Exception("There is a nan in predict method")
         self.u = u
         return predicted_u
