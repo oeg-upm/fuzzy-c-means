@@ -97,17 +97,3 @@ def draw_points_2d(points, fig=None, title="figure 123", **kwargs):
     output_file("output.html", title=title + " of outputfile")
     return fig
 
-
-# X = np.array([[1, 1], [1, 2], [2, 2], [9, 10], [10, 10], [10, 9], [9, 9]])
-# fcm = FCM()
-# fcm.set_logger(tostdout=True, level=logging.DEBUG)
-# # fcm.fit(X, [0, 0, 0, 1, 1, 1, 1])
-# fcm.fit(X)
-# testing_data = np.array([[0, 1.9], [3, 3], [4, 4], [8, 9], [9.5, 6.5], [5, 5], [4.5, 4.5], [4.2, 4.2]])
-# predicted_membership = fcm.predict(testing_data)
-# print "\n\ntesting data"
-# print testing_data
-# print "predicted membership"
-# print predicted_membership
-# print "\n\n"
-# draw_model_2d(fcm, data=testing_data, membership=predicted_membership)
