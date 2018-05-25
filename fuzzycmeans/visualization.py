@@ -62,7 +62,7 @@ def example():
     show(p)  # open a browser
 
 
-def draw_model_2d(model):
+def draw_model_2d(model, show=True):
     title = "draw FCM model"
     fig = figure(title=title, toolbar_location=None)
     fig.grid.grid_line_color = None
@@ -72,7 +72,9 @@ def draw_model_2d(model):
         print cc
         fig = draw_points_2d(np.array([cc]), fig=fig, title=title, marker="circle", size=15,
                   line_color="navy", fill_color="orange", alpha=0.5)
-    show(fig)
+    if show:
+        show(fig)
+    return fig
 
 
 def draw_points_2d(points, fig=None, title="figure 123", **kwargs):
