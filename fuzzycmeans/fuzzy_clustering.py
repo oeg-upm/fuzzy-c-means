@@ -287,5 +287,13 @@ class FCM:
         u = np.zeros((X.shape[0], len(y)))
         for clus, md in enumerate(y):
             u[md][clus] = 1.0
-        self.u = u
+        self.u = u.T
+        self.logger.debug("set_membership_from_hard_cluster > membership: ")
+        self.logger.debug(self.u)
+        num_of_points = X.shape[0]
+        num_of_features = X.shape[1]
+        self.logger.debug("num of points: %s" % str(num_of_points))
+        self.logger.debug("num of features: %s" % str(num_of_features))
         self.compute_cluster_centers(X, update_func=None)
+        self.logger.debug("set_membership_from_hard_cluster > cluster centers: ")
+        self.logger.debug(self.cluster_centers_)
