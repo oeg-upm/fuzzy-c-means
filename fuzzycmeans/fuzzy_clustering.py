@@ -234,14 +234,16 @@ class FCM:
         """
         y = np.array(y)
         X = np.array(X)
-        if y is not None:
+        if y:
             if hard:
                 self.set_membership_from_hard_cluster(X, y)
         if self.cluster_centers_ is None:
             do_compute_cluster_centers = True
         else:
             do_compute_cluster_centers = False
-
+        if self.u is None:
+            num_of_points = X.shape[0]
+            self.init_membership_random(num_of_points)
         #self.init_membership(X.shape[0])
         list_of_centers = []
         membership_history = []
