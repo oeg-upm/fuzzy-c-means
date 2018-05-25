@@ -86,8 +86,16 @@ def draw_points_2d(points, fig=None, title="figure 123", **kwargs):
     return fig
 
 
-X = np.array([[1, 1], [1, 2], [2, 2], [9, 10], [10, 10], [10, 9], [9, 9]])
-fcm = FCM()
-fcm.set_logger(tostdout=True, level=logging.DEBUG)
-fcm.fit(X, [0, 0, 0, 1, 1, 1, 1])
-draw_model_2d(fcm)
+# X = np.array([[1, 1], [1, 2], [2, 2], [9, 10], [10, 10], [10, 9], [9, 9]])
+# fcm = FCM()
+# fcm.set_logger(tostdout=True, level=logging.DEBUG)
+# fcm.fit(X, [0, 0, 0, 1, 1, 1, 1])
+# testing_data = np.array([[0, 1.9], [3, 3], [4, 4], [8, 9], [9.5, 6.5]])
+# predicted_membership = fcm.predict(testing_data)
+# print "\n\ntesting data"
+# print testing_data
+# print "predicted membership"
+# print predicted_membership
+# print "\n\n"
+# draw_model_2d(fcm)
+
