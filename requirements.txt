@@ -1,1 +1,11 @@
+atomicwrites==1.1.5
+attrs==18.1.0
+coverage==4.5.1
+funcsigs==1.0.2
+more-itertools==4.2.0
 numpy==1.14.3
+pluggy==0.6.0
+py==1.5.3
+pytest==3.6.0
+pytest-cov==2.5.1
+six==1.11.0
