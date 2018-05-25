@@ -232,9 +232,9 @@ class FCM:
         :param hard: whether y contains a list of clusters or a membership matrix
         :return: self
         """
-        y = np.array(y)
         X = np.array(X)
-        if y:
+        if y is not None:
+            y = np.array(y)
             if hard:
                 self.set_membership_from_hard_cluster(X, y)
         if self.cluster_centers_ is None:
