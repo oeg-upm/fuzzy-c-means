@@ -5,9 +5,13 @@ Fuzzy c-means Clustering
 
 ## Description
 This implementation is based on the paper
-*FCM: The fuzzy c-means clustering algorithm*
-by: James C.Bezdek, Robert Ehrlich, and  William Full
+**FCM: The fuzzy c-means clustering algorithm**
+
+*James C.Bezdek, Robert Ehrlich, and  William Full*
 
 ## To run the tests
 `sh tests/run_tests.sh`
+
+## Install via pip
+```pip install fuzzycmeans```
 
