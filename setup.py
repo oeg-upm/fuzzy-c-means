@@ -1,7 +1,22 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+
+long_description = """
+# fuzzy-c-means
+Fuzzy c-means Clustering
+
+## Description
+This implementation is based on the paper
+**FCM: The fuzzy c-means clustering algorithm**  by: *James C.Bezdek, Robert Ehrlich, and  William Full*
+
+## To run the tests
+`sh tests/run_tests.sh`
+
+## Install via pip
+```pip install fuzzycmeans```
+
+"""
+
 
 setuptools.setup(
     name="fuzzycmeans",

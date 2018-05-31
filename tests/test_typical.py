@@ -24,4 +24,5 @@ def test_2d():
 def test_logger():
     fcm = FCM()
     fcm.get_logger()
-    fcm.set_logger(tostdout=True,logfilename="output.html")
+    fcm.set_logger(tostdout=True, logfilename="output.html")
+
