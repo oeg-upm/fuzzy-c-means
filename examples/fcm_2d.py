@@ -23,6 +23,15 @@ def example():
     print(predicted_membership)
     print("\n\n")
     draw_model_2d(fcm, data=testing_data, membership=predicted_membership)
+    # draw_model_2d(fcm, data=X, membership=fcm.u)
+
+
+def example_single_known_zero_filled():
+    X = np.array([[1, 1], [1, 2], [2, 2], [0, 0], [0, 0]])
+    fcm = FCM(n_clusters=3, max_iter=1)
+    fcm.set_logger(tostdout=True, level=logging.DEBUG)
+    fcm.fit(X, [0, 0, 0, 1, 2])
+    draw_model_2d(fcm, data=X, membership=fcm.u)
 
 
 def example_single_known():
@@ -31,6 +40,8 @@ def example_single_known():
     fcm.set_logger(tostdout=True, level=logging.DEBUG)
     fcm.fit(X, [0, 0, 0, 1, 2])
     draw_model_2d(fcm, data=X, membership=fcm.u)
+    print fcm.u
 
 
+# example()
 example_single_known()
