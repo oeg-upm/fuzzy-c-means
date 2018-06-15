@@ -21,12 +21,6 @@ def test_2d():
     assert predicted_membership == pytest.approx(actual_membership, 0.01)
 
 
-def test_logger():
-    fcm = FCM()
-    fcm.get_logger()
-    fcm.set_logger(tostdout=True, logfilename="output.html")
-
-
 def test_3d_2clus():
     X = np.array([[1, 1, 1], [1, 2, 2], [2, 2, 2], [9, 10, 8], [10, 10, 10], [10, 9, 9], [9, 9, 9]])
     fcm = FCM()
