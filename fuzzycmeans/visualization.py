@@ -79,7 +79,7 @@ def draw_model_2d(model, data=None, membership=None, show_figure=True):
             for idx, data_point in enumerate(data):
                 # print idx
                 # print clus
-                print membership[idx][clus]
+                print(membership[idx][clus])
                 fig = draw_points_2d(np.array([data_point]), fig=fig, title=title, marker="circle", size=10,
                                      line_color="navy", fill_color=color, alpha=membership[idx][clus])
     if show_figure:

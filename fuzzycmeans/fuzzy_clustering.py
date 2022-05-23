@@ -3,6 +3,10 @@ import math
 import random
 import logging
 
+import sys
+if sys.version_info >= (3, 0):
+    xrange = range
+
 
 SMALL_VALUE = 0.00001
 
@@ -24,26 +28,17 @@ class FCM:
             return to step 2)
     """
 
-    def __init__(self, n_clusters=2, m=2, max_iter=10):
+    def __init__(self, n_clusters=2, m=2, max_iter=10, logger=None):
         self.n_clusters = n_clusters
         self.cluster_centers_ = None
         self.u = None  # The membership
         self.m = m  # the fuzziness, m=1 is hard not fuzzy. see the paper for more info
         self.max_iter = max_iter
-        self.logger = logging.getLogger(__name__)
-        self.logger.addHandler(logging.NullHandler())
-        # logger.addHandler(logging.StreamHandler())
-
-    def get_logger(self):
-        return self.logger
-
-    def set_logger(self, tostdout=False, logfilename=None, level=logging.WARNING):
-        if tostdout:
-            self.logger.addHandler(logging.StreamHandler())
-        if logfilename:
-            self.logger.addHandler(logging.FileHandler(logfilename))
-        if level:
-            self.logger.setLevel(level)
+        if logger is None:
+            self.logger = logging.getLogger(__name__)
+            self.logger.addHandler(logging.NullHandler())
+        else:
+            self.logger = logger
 
     def init_membership(self, num_of_points):
         self.init_membership_random(num_of_points)
@@ -234,20 +229,24 @@ class FCM:
         """
         X = np.array(X)
         if y is not None:
+            self.logger.debug("fit> y is not None")
             y = np.array(y)
             if hard:
+                self.logger.debug("fit> y is a hard membership")
                 self.set_membership_from_hard_cluster(X, y)
+                self.logger.debug("fit> the membership is set")
         if self.cluster_centers_ is None:
             do_compute_cluster_centers = True
+            self.logger.debug("fit> cluster centers will be computed")
         else:
             do_compute_cluster_centers = False
+            self.logger.debug("fit> cluster centers is already set")
         if self.u is None:
             num_of_points = X.shape[0]
             self.init_membership_random(num_of_points)
-        #self.init_membership(X.shape[0])
         list_of_centers = []
-        membership_history = []
-        membership_history.append(self.u.copy())
+        # membership_history = []
+        # membership_history.append(self.u.copy())
         for i in xrange(self.max_iter):
             if do_compute_cluster_centers:
                 centers = self.compute_cluster_centers(X)
@@ -258,9 +257,9 @@ class FCM:
                 init_centers = self.cluster_centers_
                 list_of_centers = [init_centers]
             self.update_membership(X)
-            membership_history.append(self.u.copy())
-            self.logger.info("updated membership is: ")
-            self.logger.info(self.u)
+            # membership_history.append(self.u.copy())
+            self.logger.debug("updated membership is: ")
+            self.logger.debug(self.u)
         return self
 
     def predict(self, X):
