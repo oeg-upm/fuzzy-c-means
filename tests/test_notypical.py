@@ -1,6 +1,5 @@
 import pytest
 import numpy as np
-
 from fuzzycmeans import FCM
 
 

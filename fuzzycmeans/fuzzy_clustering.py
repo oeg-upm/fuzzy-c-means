@@ -3,6 +3,10 @@ import math
 import random
 import logging
 
+import sys
+if sys.version_info >= (3, 0):
+    xrange = range
+
 
 SMALL_VALUE = 0.00001
 

@@ -20,7 +20,7 @@ This implementation is based on the paper
 
 setuptools.setup(
     name="fuzzycmeans",
-    version="1.0.1",
+    version="1.0.2",
     author="Ahmad Alobaid",
     author_email="aalobaid@fi.upm.es",
     description="Fuzzy c-means according to the research paper by James C. Bezdek et. al",
@@ -30,6 +30,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
