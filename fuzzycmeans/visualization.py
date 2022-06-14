@@ -3,7 +3,10 @@ from numpy.random import random
 from bokeh.plotting import figure, show, output_file
 from bokeh.palettes import Category20 as pallette
 import itertools
-from fuzzy_clustering import FCM
+try:
+	from fuzzycmeans import FCM
+except:
+	from fuzzy_clustering import FCM
 import logging
 
 

@@ -37,7 +37,7 @@ def example_single_known():
     fcm = FCM(n_clusters=3, max_iter=1)
     fcm.fit(X, [0, 0, 0, 1, 2])
     draw_model_2d(fcm, data=X, membership=fcm.u)
-    print fcm.u
+    print(fcm.u)
 
 
 # example()
