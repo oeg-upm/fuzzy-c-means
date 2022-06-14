@@ -82,7 +82,6 @@ class FCM:
         """
         :param num_of_points:
         :return: nothing
-
         """
         self.u = np.zeros((num_of_points, self.n_clusters))
         for i in xrange(num_of_points):
