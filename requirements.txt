@@ -1,6 +1,5 @@
 coverage==4.5.1
 numpy==1.14.3
-pytest==3.6.0
-pytest-cov==2.5.1
+pytest==7.1.2
 six==1.11.0
 bokeh==0.12.16
