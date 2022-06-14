@@ -1,5 +1,5 @@
 coverage==4.5.1
-numpy==1.14.3
+numpy==1.21.0
 pytest==3.6.0
 pytest-cov==2.5.1
 six==1.11.0
