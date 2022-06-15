@@ -35,4 +35,8 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Software Development :: Libraries",
     ),
+    install_requires=[
+              'numpy', 'six', 'bokeh'
+    ],
+
 )
