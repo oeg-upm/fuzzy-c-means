@@ -1,30 +1,26 @@
 import setuptools
+import pathlib
 
 
-long_description = """
-# fuzzy-c-means
-Fuzzy c-means Clustering
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
 
-## Description
-This implementation is based on the paper
-**FCM: The fuzzy c-means clustering algorithm**  by: *James C.Bezdek, Robert Ehrlich, and  William Full*
 
-## To run the tests
-`sh tests/run_tests.sh`
-
-## Install via pip
-```pip install fuzzycmeans```
-
-"""
+# The text of the README file
+with open("README.md") as f:
+    README = f.read()
+    lines = README.split('\n')
+    desc_lines = [line for line in lines if line[:2] != "[!"]
+    README = "\n".join(desc_lines)
 
 
 setuptools.setup(
     name="fuzzycmeans",
-    version="1.0.3",
+    version="1.0.4",
     author="Ahmad Alobaid",
     author_email="aalobaid@fi.upm.es",
     description="Fuzzy c-means according to the research paper by James C. Bezdek et. al",
-    long_description=long_description,
+    long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/oeg-upm/fuzzy-c-means",
     packages=setuptools.find_packages(),
@@ -38,5 +34,4 @@ setuptools.setup(
     install_requires=[
               'numpy', 'six', 'bokeh'
     ],
-
 )
