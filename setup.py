@@ -24,13 +24,13 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/oeg-upm/fuzzy-c-means",
     packages=setuptools.find_packages(),
-    classifiers=(
+    classifiers=[
         "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Software Development :: Libraries",
-    ),
+    ],
     install_requires=[
               'numpy', 'six', 'bokeh'
     ],
